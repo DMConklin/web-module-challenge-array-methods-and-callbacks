@@ -8,15 +8,16 @@ Practice accessing data by console.log-ing the following pieces of data note.
 💡 HINT: You may want to filter the data first 😉*/
 
 //(a) Home Team name for 2014 world cup final
-
+const finals2014 = fifaData.filter(data => data.Year === 2014 && data.Stage === 'Final')
+console.log(finals2014[0]["Home Team Name"])
 //(b) Away Team name for 2014 world cup final
-
+console.log(finals2014[0]["Away Team Name"])
 //(c) Home Team goals for 2014 world cup final
-
+console.log(finals2014[0]["Home Team Goals"])
 //(d) Away Team goals for 2014 world cup final
-
+console.log(finals2014[0]["Away Team Goals"])
 //(e) Winner of 2014 world cup final */
-
+console.log(finals2014[0]["Home Team Goals"] > finals2014[0]["Away Team Goals"] ? finals2014[0]["Home Team Name"] : finals2014[0]["Away Team Name"])
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
@@ -26,8 +27,8 @@ Use getFinals to do the following:
 💡 HINT - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(/* code here */) {
-    /* code here */
+function getFinals(/* code here */data) {
+    /* code here */return data.filter(item => item.Stage === "Final")
  }
 
 
@@ -38,8 +39,10 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function as the second parameter that will take getFinals from task 2 as an argument
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(/* code here */) {
+function getYears(/* code here */data, callback) {
     /* code here */
+    const finals = callback(data)
+    return finals.map(final => final.Year)
 }
 
 
@@ -52,8 +55,10 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
+function getWinners(/* code here */data,callback) {
     /* code here */
+    const finals = callback(data)
+    return finals.map(final => final['Home Team Goals'] > final["Away Team Goals"] ? final["Home Team Name"] : final['Away Team Name'])
 }
 
 
